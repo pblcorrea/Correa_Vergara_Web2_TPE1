@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-10-2021 a las 00:33:00
+-- Tiempo de generación: 23-11-2021 a las 16:12:41
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.6
 
@@ -43,7 +43,30 @@ INSERT INTO `autor` (`id_autor`, `nombre`, `apellido`) VALUES
 (3, 'Julio', 'Cortázar'),
 (4, 'Alfonsina', 'Storni'),
 (5, 'Ernesto', 'Sábato'),
-(6, 'Gabriela', 'Mistral');
+(6, 'Gabriela', 'Mistral'),
+(15, 'Andrea', 'Vergara');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentario`
+--
+
+CREATE TABLE `comentario` (
+  `id_comentario` int(11) NOT NULL,
+  `comentario` varchar(100) NOT NULL,
+  `puntuacion` int(10) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `id_libro` int(11) NOT NULL,
+  `fecha` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `comentario`
+--
+
+INSERT INTO `comentario` (`id_comentario`, `comentario`, `puntuacion`, `id_usuario`, `id_libro`, `fecha`) VALUES
+(23, 'comentario nuevo', 4, 2, 1, '2021-11-23 15:10:28');
 
 -- --------------------------------------------------------
 
@@ -64,8 +87,8 @@ CREATE TABLE `libro` (
 --
 
 INSERT INTO `libro` (`id_libro`, `titulo`, `anio`, `sinopsis`, `id_autor`) VALUES
-(1, 'Cien años de soledad', 1967, '     Entre la boda de José Arcadio Buendía con Amelia Iguarán hasta la maldición de Aureliano Babilonia transcurre todo un siglo. Cien años de soledad para una estirpe única, fantástica, capaz de fundar una ciudad tan especial como Macondo y de engendrar niños con cola de cerdo.     ', 1),
-(2, 'Crónica de una muerte anunciada', 1981, '  En un pequeño y aislado pueblo en la costa del Caribe, se casan Bayardo San Román, un hombre rico y recién llegado, y Ángela Vicario. Años después, Ángela Vicario estaría escribiendo cada día a Bayardo, primero formalmente, después con cartas de joven enamorada y, al final, fingiendo enfermedades.  ', 1),
+(1, 'Cien años de soledad', 1967, 'Entre la boda de José Arcadio Buendía con Amelia Iguarán hasta la maldición de Aureliano Babilonia transcurre todo un siglo. Cien años de soledad para una estirpe única, fantástica, capaz de fundar una ciudad tan especial como Macondo y de engendrar niños con cola de cerdo.', 1),
+(2, 'Crónica de una muerte anunciada', 1981, 'En un pequeño y aislado pueblo en la costa del Caribe, se casan Bayardo San Román, un hombre rico y recién llegado, y Ángela Vicario. Años después, Ángela Vicario estaría escribiendo cada día a Bayardo, primero formalmente, después con cartas de joven enamorada y, al final, fingiendo enfermedades.', 1),
 (3, 'El amor en los tiempos del cólera', 1985, 'De jóvenes, Florentino Ariza y Fermina Daza se enamoran apasionadamente, pero Fermina eventualmente decide casarse con un médico rico y de muy buena familia. Florentino está anonadado, pero es un romántico. A los cincuenta años, nueve meses y cuatro días de haberle profesado amor a Fermina, lo hará una vez más.', 1),
 (4, 'La casa de los espíritus', 1982, 'La casa de los espíritus narra la saga de una poderosa familia de terratenientes latinoamericanos. El despótico patriarca Esteban Trueba ha construido con mano de hierro un imperio privado que empieza a tambalearse con el paso del tiempo y un entorno social explosivo.', 2),
 (5, 'De amor y de sombra', 1984, 'En palabras de la propia autora, «es la historia de una mujer y un hombre que se amaron en plenitud, salvándose así de una historia vulgar. Escrita durante su exilio en Venezuela, el amor entre Irene y Francisco es un alegato apasionado a favor de la fe en la libertad y la dignidad humanas.', 2),
@@ -79,8 +102,7 @@ INSERT INTO `libro` (`id_libro`, `titulo`, `anio`, `sinopsis`, `id_autor`) VALUE
 (13, 'Sobre héroes y tumbas', 1961, 'Un relato sobre los últimos representantes de una familia oligárquica venida a menos. Por un lado, Martín y Alejandra, que viven una relación tortuosa y atormentada, son incapaces de escapar de un turbio destino: la genética predisposición de la familia de ella a la locura.', 5),
 (14, 'Abbadón el exterminador', 1974, 'Cuando el Ángel del Apocalipsis irrumpe con la fuerza de un huracán devastador, el lector ingresa al fascinante y aterrador mundo de esta vasta novela onírica, visionaria y anunciadora de las desgracias de nuestro tiempo.', 5),
 (15, 'Desolación', 1922, 'Es el paisaje desolado de la Patagonia, que Gabriela Mistral describe en Naturaleza, parte de esta obra, publicada por primera vez en Nueva York, en 1922. Tras esa edición, la figura de Gabriela Mistral comenzó a elevarse por entre los grandes autores de la literatura universal.', 6),
-(16, 'Ternura', 1924, 'Para Gabriela Mistral Ternura no solamente pretendía entretener y educar a niños por medio de la poesía, sino que también era un llamado a los adultos respecto de su responsabilidad ante la situación de aquellos, en particular por los niños que vivían en situación de abandono.', 6),
-(17, 'Lagar', 1954, 'Lagar fue el último libro de Mistral publicado en vida y el único libro de la poeta en ser publicado primero en Chile que en el extranjero, hecho por el que manifestó sentir gran satisfacción. El tono de la poesía que compone Lagar profundiza el carácter complejo de toda la obra poética de Mistral. Para algunos autores, refleja el momento culmen de su creación, el ansiado encuentro con la plenitud de la propia identidad.', 6);
+(16, 'Ternura', 1924, 'Para Gabriela Mistral Ternura no solamente pretendía entretener y educar a niños por medio de la poesía, sino que también era un llamado a los adultos respecto de su responsabilidad ante la situación de aquellos, en particular por los niños que vivían en situación de abandono.', 6);
 
 -- --------------------------------------------------------
 
@@ -91,15 +113,17 @@ INSERT INTO `libro` (`id_libro`, `titulo`, `anio`, `sinopsis`, `id_autor`) VALUE
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `contrasenia` varchar(100) NOT NULL
+  `contrasenia` varchar(100) NOT NULL,
+  `esAdministrador` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `email`, `contrasenia`) VALUES
-(1, 'admin1@demo.com', '$2y$10$NCvBHhoEzxOo70Xn7Imo1uwSnaL/KPU0pJjMt7ipWOWJ/K/6Oy/zy');
+INSERT INTO `usuario` (`id_usuario`, `email`, `contrasenia`, `esAdministrador`) VALUES
+(1, 'admin1@demo.com', '$2y$10$1xnHGeJEvvhJPxtVRKYC.ulx4rvV33S/joCoR2D.abQ/XF2hxq4KG', 1),
+(2, 'usuario1@demo.com', '$2y$10$TO/aqzMbEogiMf9iakx3Z.MDl6gvI.Y2iTlkWdN9Pw7CLXEkaNJ8G', 0);
 
 --
 -- Índices para tablas volcadas
@@ -110,6 +134,14 @@ INSERT INTO `usuario` (`id_usuario`, `email`, `contrasenia`) VALUES
 --
 ALTER TABLE `autor`
   ADD PRIMARY KEY (`id_autor`);
+
+--
+-- Indices de la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  ADD PRIMARY KEY (`id_comentario`),
+  ADD KEY `FK_id_usuario` (`id_usuario`),
+  ADD KEY `FK_id_libro` (`id_libro`) USING BTREE;
 
 --
 -- Indices de la tabla `libro`
@@ -132,23 +164,36 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `autor`
 --
 ALTER TABLE `autor`
-  MODIFY `id_autor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_autor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT de la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `libro`
 --
 ALTER TABLE `libro`
-  MODIFY `id_libro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_libro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE,
+  ADD CONSTRAINT `comentario_ibfk_2` FOREIGN KEY (`id_libro`) REFERENCES `libro` (`id_libro`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `libro`

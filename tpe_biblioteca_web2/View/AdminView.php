@@ -17,30 +17,54 @@ class AdminView
     }
 
 
-    function showBibliotecaAdmin($biblioteca,$autores)
+    function showBibliotecaAdmin($biblioteca,$autores,$userName,$userRol)
     {
         $this->smarty->assign('titulo', 'Biblioteca Autores Latinoamericanos');
         $this->smarty->assign('biblioteca', $biblioteca);
         $this->smarty->assign('autores', $autores);
+        $this->smarty->assign('userName',$userName);
+        $this->smarty->assign('userRol',$userRol);
         $this->smarty->display('../templates/listBibliotecaAdmin.tpl');
     }
 
-    function showUpdateBook($book,$autores){
+    function showUpdateBook($book,$autores,$userName,$userRol){
         $this->smarty->assign('libro', $book);
         $this->smarty->assign('autores',$autores);
+        $this->smarty->assign('userName',$userName);
+        $this->smarty->assign('userRol',$userRol);
         $this->smarty->display('../templates/updateLibroAdmin.tpl');
     }
 
-    function showAuthorsAdmin($autores){
+    function showAuthorsAdmin($autores,$userRol,$userName){
         $this->smarty->assign('titulo', 'Autores Latinoamericanos');
         $this->smarty->assign('autores', $autores);
+        $this->smarty->assign('userName',$userName);
+        $this->smarty->assign('userRol',$userRol);
         $this->smarty->display('../templates/listAuthorsAdmin.tpl');
     }
 
-    function showUpdateAuthor($autores,$id){
+    function showUpdateAuthor($autores,$id,$userRol,$userName){
         $this->smarty->assign('titulo', 'Autores Latinoamericanos');
         $this->smarty->assign('autores', $autores);
         $this->smarty->assign('idAutor', $id);
+        $this->smarty->assign('userName',$userName);
+        $this->smarty->assign('userRol',$userRol);
         $this->smarty->display('../templates/listAuthorsAdmin.tpl');
+    }
+
+
+    function showRegistro($error = "")
+    {
+        $this->smarty->assign('titulo', 'Registrarse');
+        $this->smarty->assign('error', $error);
+        $this->smarty->display('../templates/registro.tpl');
+    }
+
+    function showUsers($usuarios,$userName,$userRol){
+        $this->smarty->assign('titulo', 'Usuarios del Sistema Biblioteca');
+        $this->smarty->assign('usuarios', $usuarios);
+        $this->smarty->assign('userName',$userName);
+        $this->smarty->assign('userRol',$userRol);
+        $this->smarty->display('../templates/listUsuarios.tpl');
     }
 }

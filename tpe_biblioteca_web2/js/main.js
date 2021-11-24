@@ -27,4 +27,6 @@ function cargardom(){
     anchor.href+=id;
     dialogo.showModal();
   }
+
+
 }

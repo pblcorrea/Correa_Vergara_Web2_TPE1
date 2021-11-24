@@ -1,4 +1,4 @@
-{include file="templates/headerAdmin.tpl" }
+{include file="templates/header.tpl" }
 <h1>{$titulo}</h1>
 
 <div class="container">
@@ -15,7 +15,7 @@
             {foreach from=$biblioteca item=$libro}
                 <tr>
                     <td>
-                        {$libro->titulo}
+                    <a href="viewBook/{$libro ->id_libro}/{$libro->nombre}/{$libro->apellido}">{$libro->titulo}</a>
                     </td>
                     <td>
                         {$libro->nombre} {$libro->apellido}

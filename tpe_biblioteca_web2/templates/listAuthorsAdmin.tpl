@@ -1,4 +1,4 @@
-{include file="templates/headerAdmin.tpl" }
+{include file="templates/header.tpl" }
 <h1>{$titulo}</h1>
 <div class="container">
     <table class="table table-hover tabla">

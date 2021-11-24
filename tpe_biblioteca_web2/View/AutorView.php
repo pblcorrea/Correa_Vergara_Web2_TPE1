@@ -16,9 +16,11 @@ class AutorView{
 
     
     
-    function showAuthors($authors){
+    function showAuthors($authors,$rolUser = null, $userName = null){
         $this->smarty->assign('titulo','Autores Latinoamericanos');
         $this->smarty->assign('autores',$authors);
+        $this->smarty->assign('userRol',$rolUser);
+        $this->smarty->assign('userName',$userName);
         $this->smarty->display('../templates/listAutores.tpl');
 
     }

@@ -8,24 +8,21 @@
     define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' .$_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
 
-    //lee la acción
     if(!empty($_GET['action'])){
         $action = $_GET['action'];
     }else {
-        $action = 'home'; //acción por defecto si no envía
+        $action = 'home'; 
     }
 
-    //Parsea la accion Ej: suma/1/2 --> ['suma', 1,2]
-    //calculadora/route.php?action=pi -->['pi']
+    
     $params = explode('/',$action);
 
-    //instanciar la clase para usar las funciones del CONTROLADOR
+   
 
     $autorController = new AutorController(); 
     $libroController = new LibroController();
     $loginController = new LoginController();
 
-    //determina que camino seguir según la acción
 
     
     switch ($params[0]){
@@ -51,6 +48,12 @@
             break;
         case 'logout':
             $loginController->logout();
+            break;
+        case 'registrarse':
+            $loginController->showFormRegistro();
+            break;
+        case 'verifyRegistro':
+            $loginController->verifyRegistro();
             break;
         case 'deleteBook':
             $libroController->deleteBook($params[1]);
@@ -81,6 +84,15 @@
             break;
         case 'deleteAuthor':
             $autorController->deleteAuthor($params[1]);
+            break;  
+        case 'adminUsuarios':
+            $loginController->adminUsuarios();
+            break;  
+        case 'cambiarRol':
+            $loginController->cambiarRol($params[1]);
+            break;  
+        case 'deleteUsuario':
+            $loginController->deleteUsuario($params[1]);
             break;  
         default:
             echo('404 Page not found');

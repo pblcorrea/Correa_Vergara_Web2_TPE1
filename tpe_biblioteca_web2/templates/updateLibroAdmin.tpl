@@ -1,4 +1,4 @@
-{include file="templates/headerAdmin.tpl" }
+{include file="templates/header.tpl" }
 
 
 <div class="card mx-auto mt-3 detalleLibro colorFondo">
